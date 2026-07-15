@@ -30,7 +30,9 @@ jobs:
 
       - name: Trigger AI Vulnerability Scanner
         run: |
-          curl -L \
+          response=$(curl -s \
+            -o response.json \
+            -w "%{http_code}" \
             -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.AI_SCANNER_PAT }}" \
@@ -43,4 +45,16 @@ jobs:
                 "branch": "${{ github.ref_name }}",
                 "commit": "${{ github.sha }}"
               }
-            }'
+            }')
+
+          echo "HTTP Status: $response"
+
+          echo "GitHub API Response:"
+          cat response.json
+
+          if [ "$response" != "204" ]; then
+            echo "Dispatch failed"
+            exit 1
+          fi
+
+          echo "AI Scanner triggered successfully."
