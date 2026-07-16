@@ -5,4 +5,5 @@ jwt_secret = "SUPER_SECRET_JWT_KEY"
 stripe_secret = "sk_live_123456789"
 session_secret = "VERY_SECRET_SESSION_KEY"
 jwt_secret = "MY_SECRET"
+jwt_secret = "ANOTHER_SECRET"
 print(password)
