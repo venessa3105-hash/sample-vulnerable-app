@@ -7,3 +7,4 @@
 # force push test
 # sonar connector test
 # Push trigger automation test
+# GitHub Issues automation test
