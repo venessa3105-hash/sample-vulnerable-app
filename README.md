@@ -6,3 +6,4 @@
 # force push test
 # force push test
 # sonar connector test
+# Push trigger automation test
